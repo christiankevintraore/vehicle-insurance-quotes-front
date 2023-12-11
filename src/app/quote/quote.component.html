@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <div class="card mx-auto">
+      <div *ngIf="!quote">
+        <div class="card-header">
+          <h2 translate>No Quote</h2>
+        </div>
+      </div>
+      <div *ngIf="quote">
+        <div class="card-header">
+          <h2 translate>Quote</h2>
+        </div>
+      </div>
+      <div class="card-content">
+        <div *ngIf="quote" class="quote-data">
+          <p *ngIf="quote.premium">
+            <strong translate>Premium</strong> :
+            <span class="quote-success">{{ quote.premium | number : '1.2-2' }} $</span>
+          </p>
+    
+          <p>
+            <strong translate>Premium Reference</strong> :
+            <span [ngClass]="{'quote-success': quote.premium, 'quote-unknown': !quote.premium}">Q-{{ quote.id }}</span>
+          </p>
+    
+          <p>
+            <strong translate>Request Reference</strong> :
+            <span [ngClass]="{'quote-success': quote.premium, 'quote-unknown': !quote.premium}">R-{{ quote.requestId }}</span>
+          </p>
+    
+          <p>
+            <span [ngClass]="{'quote-success': quote.premium, 'quote-unknown': !quote.premium}" translate>{{ quote.status }}</span>
+          </p>
+        </div>
+        
+        <p>
+          <strong>
+            <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
+              <i class="fas fa-home"></i>
+              <span translate>Back To Home</span>
+            </a>
+          </strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

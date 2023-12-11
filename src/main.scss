@@ -1,0 +1,49 @@
+/*
+ * Entry point of global application style.
+ * Component-specific style should not go here and be included directly as part of the components.
+ */
+
+// Theme variables, must be included before the libraries to allow overriding defaults
+@import "theme/theme-variables";
+
+// 3rd party libraries
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+// Theme customization
+@import "theme/theme";
+
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  // max-width: 800px;
+  justify-content: center;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

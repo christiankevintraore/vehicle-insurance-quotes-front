@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <app-loader [isLoading]="isLoading"></app-loader>
+
+    <div class="card mx-auto">
+      <div class="card-header">
+        <h2 translate>Get Quote</h2>
+      </div>
+      <div class="card-content">
+        <div class="cars-form-container">
+          <div class="form-field" *ngIf="carsList">
+            <label><span translate>Your car</span>:</label>
+            <select [(ngModel)]="selectedCarId" (change)="updateCarFields()">
+              <option *ngFor="let car of carsList" [value]="car.id">
+                {{ car.Model }} {{ car.Make }} ({{ car.Year }} - {{ car.Category }})
+              </option>
+            </select>
+            <span class="required">*</span>
+          </div>
+
+          <form [formGroup]="carsForm">
+            <div class="form-field">
+              <label><span translate>Year</span>:</label>
+              <input type="number" formControlName="Year" (blur)="carsFormFieldChanged()" />
+              <span class="required">*</span>
+            </div>
+
+            <div class="form-field">
+              <label><span translate>Model</span>:</label>
+              <input type="text" formControlName="Model" (blur)="carsFormFieldChanged()" />
+              <span class="required">*</span>
+            </div>
+
+              <div class="form-field">
+                <label><span translate>Make</span>:</label>
+                <input type="text" formControlName="Make" (blur)="carsFormFieldChanged()" />
+                <span class="required">*</span>
+              </div>
+              
+              <div class="form-field">
+                <label><span translate>Category</span>:</label>
+                <input type="text" formControlName="Category" (blur)="carsFormFieldChanged()" />
+                <span class="required">*</span>
+              </div>
+          </form>
+        </div>
+
+        <div *ngIf="selectedCarId" class="cars-form-container">
+          <div *ngIf="isFormInvalid" class="error">
+            <span translate>Form Invalid</span>
+          </div>
+
+          <form [formGroup]="insuranceForm">
+            <div class="form-field">
+              <label><span translate>Age</span>:</label>
+              <input type="number" formControlName="age" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <div class="form-field">
+              <label><span translate>Driving Experience</span>:</label>
+              <input type="number" formControlName="drivingExperience" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <div class="form-field">
+              <label><span translate>Driver Record</span>:</label>
+              <input type="number" formControlName="driverRecord" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <div class="form-field">
+              <label><span translate>Claims</span>:</label>
+              <input type="number" formControlName="claims" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <div class="form-field">
+              <label><span translate>Car Value</span>:</label>
+              <input type="number" formControlName="carValue" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <div class="form-field">
+              <label><span translate>Annual Mileage</span>:</label>
+              <input type="number" formControlName="annualMileage" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <div class="form-field">
+              <label><span translate>Insurance History</span>:</label>
+              <input type="number" formControlName="insuranceHistory" autocomplete="on"/>
+              <span class="required">*</span>
+            </div>
+  
+            <button type="button" (click)="submitForm()">Soumettre</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
